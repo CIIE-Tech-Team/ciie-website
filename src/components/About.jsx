@@ -1,11 +1,12 @@
 import React from 'react'
+import ciie from '../assets/ciiewhite.jpg'
 
 
 const About = () => {
   return (
     <div className='max-w-[1200px] p-2 mx-auto h-screen md:grid grid-cols-2'>
       <div className=' col-span-1 md:w-[80%] text-center'>
-         <img src="src\assets\ciiewhite.jpg"  alt="" className='inline'/>
+         <img src={ciie}  alt="" className='inline'/>
       </div>
       <div className='col-span-1 flex flex-col justify-center'>
          <h1 className='text-violet-600 font-bold my-2 md:text-5xl text-2xl'>Learn, Grow and Build Together.</h1>
