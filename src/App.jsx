@@ -4,6 +4,8 @@ import Hero from './components/Hero'
 import Navbar from './components/Navbar'
 import Team from './components/Team'
 import Footer from './components/Footer'
+import Testimonials from './components/Testimonials'
+
 
 function App() {
 
@@ -11,12 +13,17 @@ function App() {
     <div className="App">
         <Navbar/>
         {/* <Hero /> */}
-        <About/>
         <Cards/>
-        <Team/>
+        <About/>
+        <Testimonials/>
+      
+
+        
+        
         <Footer/>
     </div>
   )
 }
 
 export default App
+
