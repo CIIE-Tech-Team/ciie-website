@@ -1,21 +1,39 @@
 import React from 'react'
-import ciie from '../assets/ciiewhite.jpg'
+import ciie from 'D:/LMAo/ciie-website/src/assets/ciie-removebg-preview.png'
 
 
 const About = () => {
   return (
-    <div className='max-w-[1200px] p-2 mx-auto h-screen md:grid grid-cols-2'>
-      <div className=' col-span-1 md:w-[80%] text-center'>
-         <img src={ciie}  alt="" className='inline'/>
-      </div>
-      <div className='col-span-1 flex flex-col justify-center'>
-         <h1 className='text-violet-600 font-bold my-2 md:text-5xl text-2xl'>Learn, Grow and Build Together.</h1>
-         <p className='my-2 mt-3 md:text-2xl text-xl text-justify'>
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptatibus tempora architecto, veniam sed modi illo delectus maxime eius quibusdam soluta enim, nemo quos facilis assumenda itaque natus ab ut ad.
-         </p>
-      </div>
-      <div className='mb-[50rem] pb-[50rem]'></div>
+    <>
+    <div className='grid grid-cols-1 md:grid-cols-2 w-11/12 md:w-4/5 mx-auto gap-4'>
+  <div className='flex justify-center items-center'>
+    <div className='w-full md:w-4/5 text-center'>
+      <img src={ciie} alt="" className='inline' />
     </div>
+  </div>
+  <div className='flex justify-center items-center'>
+    <div className='col-span-1 flex flex-col justify-center'>
+    <h1 className='text-blue-800 font-bold my-2 md:text-5xl text-2xl text-center' style={{ color: '#0047AB' }}>Centre for Innovation, Incubation and Entrepreneurship</h1>
+    </div>
+  </div>
+</div>
+<div className="border-b-2 border-orange-500 my-4 mx-auto w-16 md:w-32"></div>
+    
+
+
+<div className="mx-auto px-4 md:w-4/5 lg:w-3/5">
+ 
+  <p className="text-lg text-justify leading-7">
+  The Centre for Innovation, Incubation and Entrepreneurship (CIIE) is a student organization at SRM University that is dedicated to fostering and nurturing innovative ideas among students. Our mission is to provide a platform for students to explore their entrepreneurial interests, learn from industry experts, and build innovative solutions to real-world problems. We aim to inspire and empower the next generation of entrepreneurs and leaders by promoting creativity, innovation, and collaboration. Join us to unleash your potential and make a positive impact on the world!
+  <br/>
+  <br/>
+  
+  </p>
+</div>
+
+</>
+  
+  
   )
 }
 
