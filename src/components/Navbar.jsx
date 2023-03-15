@@ -1,4 +1,5 @@
 import { useState } from "react";
+import srmlogo from '../assets/SRM_Logo.png'
 
 export default function NavBar() {
     const [navbar, setNavbar] = useState(false);
@@ -9,8 +10,7 @@ export default function NavBar() {
                 <div>
                     <div className="flex items-center justify-between py-3 md:py-5 md:block">
                         <a href="#">
-                            <h2 className="text-2xl font-bold">
-                            CIIE</h2>
+                        <img src={srmlogo} alt="" className='inline' />
                         </a>
                         <div className="md:hidden">
                             <button
