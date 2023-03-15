@@ -1,5 +1,5 @@
 import React from 'react'
-import ciie from 'D:/LMAo/ciie-website/src/assets/ciie-removebg-preview.png'
+import ciie from '../assets/ciie-removebg-preview.png'
 
 
 const About = () => {

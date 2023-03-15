@@ -1,72 +1,84 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { BsChevronCompactLeft, BsChevronCompactRight } from 'react-icons/bs';
-import { RxDotFilled } from 'react-icons/rx';
 
 const Cards = () => {
-   const slides = [
-      {
-        url: 'https://images.unsplash.com/photo-1531297484001-80022131f5a1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2620&q=80',
-      },
-      {
-        url: 'https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2670&q=80',
-      },
-      {
-        url: 'https://images.unsplash.com/photo-1661961112951-f2bfd1f253ce?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2672&q=80',
-      },
-  
-      {
-        url: 'https://images.unsplash.com/photo-1512756290469-ec264b7fbf87?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2253&q=80',
-      },
-      {
-        url: 'https://images.unsplash.com/photo-1496181133206-80ce9b88a853?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2671&q=80',
-      },
-    ];
-  
-    const [currentIndex, setCurrentIndex] = useState(0);
-  
-    const prevSlide = () => {
-      const isFirstSlide = currentIndex === 0;
-      const newIndex = isFirstSlide ? slides.length - 1 : currentIndex - 1;
-      setCurrentIndex(newIndex);
-    };
-  
-    const nextSlide = () => {
-      const isLastSlide = currentIndex === slides.length - 1;
-      const newIndex = isLastSlide ? 0 : currentIndex + 1;
-      setCurrentIndex(newIndex);
-    };
-  
-    const goToSlide = (slideIndex) => {
-      setCurrentIndex(slideIndex);
-    };
-  
-    return (
-      <div className='max-w-[1400px] h-[780px] w-full m-auto py-16 px-4 relative group'>
-        <div
-          style={{ backgroundImage: `url(${slides[currentIndex].url})` }}
-          className='w-full h-full rounded-2xl bg-center bg-cover duration-500'
-        ></div>
-        {/* Left Arrow */}
-        <div className='hidden group-hover:block absolute top-[50%] -translate-x-0 translate-y-[-50%] left-5 text-2xl rounded-full p-2 bg-black/20 text-white cursor-pointer'>
-          <BsChevronCompactLeft onClick={prevSlide} size={30} />
-        </div>
-        {/* Right Arrow */}
-        <div className='hidden group-hover:block absolute top-[50%] -translate-x-0 translate-y-[-50%] right-5 text-2xl rounded-full p-2 bg-black/20 text-white cursor-pointer'>
-          <BsChevronCompactRight onClick={nextSlide} size={30} />
-        </div>
-        <div className='flex top-4 justify-center py-2'>
-          {slides.map((slide, slideIndex) => (
-            <div
-              key={slideIndex}
-              onClick={() => goToSlide(slideIndex)}
-              className='text-2xl cursor-pointer'
-            >
-              <RxDotFilled />
-            </div>
-          ))}
+  const photos = [
+    {
+      url: 'https://via.placeholder.com/800x400/FFC107/000000?text=Photo+1',
+    },
+    {
+      url: 'https://via.placeholder.com/800x400/2196F3/000000?text=Photo+2',
+    },
+    {
+      url: 'https://via.placeholder.com/800x400/4CAF50/000000?text=Photo+3',
+    },
+    {
+      url: 'https://via.placeholder.com/800x400/F44336/000000?text=Photo+4',
+    },
+    {
+      url: 'https://via.placeholder.com/800x400/9C27B0/000000?text=Photo+5',
+    },
+  ];
+
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      nextPhoto();
+    }, 5000);
+    return () => clearInterval(intervalId);
+  }, [currentIndex]);
+
+  const prevPhoto = () => {
+    const isFirstPhoto = currentIndex === 0;
+    const newIndex = isFirstPhoto ? photos.length - 1 : currentIndex - 1;
+    setCurrentIndex(newIndex);
+  };
+
+  const nextPhoto = () => {
+    const isLastPhoto = currentIndex === photos.length - 1;
+    const newIndex = isLastPhoto ? 0 : currentIndex + 1;
+    setCurrentIndex(newIndex);
+  };
+
+  const goToPhoto = (photoIndex) => {
+    setCurrentIndex(photoIndex);
+  };
+
+  return (
+    <div className='relative'>
+      <div
+        className='flex justify-center items-center h-80'
+        style={{ backgroundImage: `url(${photos[currentIndex].url})`, backgroundSize: 'cover' }}
+      >
+        <div className='absolute inset-0 bg-gradient-to-t from-black opacity-40'></div>
+        <div className='absolute bottom-0 left-0 w-full p-4'>
+          <h2 className='text-xl font-bold text-white'>{`Photo ${currentIndex + 1}`}</h2>
         </div>
       </div>
-    );
-}
+      <div className='absolute top-1/2 -mt-4 flex items-center'>
+        <button className='text-4xl text-gray-300 hover:text-white' onClick={prevPhoto}>
+          <BsChevronCompactLeft />
+        </button>
+        <div className='mx-4 flex items-center space-x-2'>
+          {photos.map((photo, index) => (
+            <button
+              key={index}
+              className={`text-2xl text-gray-300 hover:text-white ${
+                index === currentIndex ? 'text-white' : ''
+              }`}
+              onClick={() => goToPhoto(index)}
+            >
+              &#8226;
+            </button>
+          ))}
+        </div>
+        <button className='text-4xl text-gray-300 hover:text-white' onClick={nextPhoto}>
+          <BsChevronCompactRight />
+        </button>
+      </div>
+    </div>
+  );
+};
 
-export default Cards
+export default Cards;
